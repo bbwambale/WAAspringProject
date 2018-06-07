@@ -12,7 +12,10 @@ public class HomeController {
 	}
 
 	@GetMapping({"/secure"})
-	public String securePage() {
+	public String securePage()
+
+
+	{
 		return "secure";
 	}
 }
