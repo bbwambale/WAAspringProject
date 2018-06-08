@@ -21,6 +21,8 @@ public class Person {
 	private Address address;
 	private String phone;
 	private boolean enable;
+	private String password;
+
 
 	public long getId() {
 		return id;
@@ -74,4 +76,11 @@ public class Person {
 		this.phone = phone;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
