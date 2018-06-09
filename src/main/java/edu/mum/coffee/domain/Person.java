@@ -26,8 +26,6 @@ public class Person {
     private boolean isAdmin;
 
 
-
-
     public long getId() {
 		return id;
 	}
