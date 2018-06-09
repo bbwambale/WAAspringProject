@@ -1,5 +1,4 @@
 package edu.mum.coffee.domain;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,12 +21,15 @@ public class Person {
 	private String phone;
 	private boolean enable;
 	private String password;
-    private String role;
-    private boolean isAdmin;
+	private String role;
+	private boolean isAdmin;
 
-
-    public long getId() {
+	public long getId() {
 		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public boolean isEnable() {
@@ -85,13 +87,20 @@ public class Person {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    public boolean isAdmin() {
-        return isAdmin;
-    }
 
-    public void setAdmin(boolean admin) { isAdmin = admin; }
+	public boolean isAdmin() {
+		return isAdmin;
+	}
 
-    public String getRole() {return role;  }
+	public void setAdmin(boolean admin) {
+		isAdmin = admin;
+	}
 
-    public void setRole(String role) {this.role = role;}
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 }
