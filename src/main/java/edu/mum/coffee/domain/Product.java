@@ -1,10 +1,13 @@
 package edu.mum.coffee.domain;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Product {
@@ -12,6 +15,7 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotNull(message = "Product Name can not be empty")
 	private String productName;
 	private String description;
 	private double price;
@@ -69,5 +73,4 @@ public class Product {
 	public void setId(int id){
 		this.id = id;
 	}
-
 }

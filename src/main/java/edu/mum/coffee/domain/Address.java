@@ -1,5 +1,4 @@
 package edu.mum.coffee.domain;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -47,4 +46,11 @@ public class Address {
 		this.zipcode = zipcode;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
