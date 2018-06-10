@@ -80,6 +80,11 @@ public class UserController {
         Order order = null;
         Person principal = (Person) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String orderKey = ((Person) principal).getEmail() + "-" + "cart";
+        if (tokenService.contains(orderKey, Utility.UNEXPIREDCACHE)) {
+            order = (Order) tokenService.retrieve(orderKey, Utility.UNEXPIREDCACHE);
+        } else {
+            order = new Order();
+            tokenService.saveObject(orderKey, order, Utility.UNEXPIREDCACHE);
         if (tokenService.contains(orderKey)) {
             order = (Order) tokenService.retrieve(orderKey);
         } else {

@@ -14,11 +14,16 @@ public class TokenProviderConfig {
     public CacheManager cacheManager(){
         CacheManager manager = CacheManager.create();
         Cache cache = new Cache(
-                new CacheConfiguration("tokenCache", 80000)
+                new CacheConfiguration(TOKEN_CACHE, 80000)
                         .memoryStoreEvictionPolicy(MemoryStoreEvictionPolicy.LFU)
                         .eternal(false)
-                        .timeToIdleSeconds(900));
+                        .timeToIdleSeconds(30));
+        Cache unExpiredCache = new Cache(
+                new CacheConfiguration(UNEXPIREDCACHE, 80000)
+                        .memoryStoreEvictionPolicy(MemoryStoreEvictionPolicy.LFU)
+                        .eternal(true));
         manager.addCache(cache);
+        manager.addCache(unExpiredCache);
         return manager;
     }
 }

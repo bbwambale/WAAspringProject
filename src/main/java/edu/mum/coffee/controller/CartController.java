@@ -36,6 +36,7 @@ public class CartController {
         Person person = (Person) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String orderKey = person.getEmail() + "-" + "cart";
         Order order = (Order) tokenService.retrieve(orderKey);
+        Order Order = (Order) tokenService.retrieve(orderKey, Utility.UNEXPIREDCACHE);
         model.addAttribute("token", token);
         model.addAttribute("order", order);
         model.addAttribute("quantity", order.getQuantity());
@@ -49,12 +50,15 @@ public class CartController {
         Person person = (Person) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String orderKey = person.getEmail() + "-" + "cart";
         Order order = (Order) tokenService.retrieve(orderKey);
+        Order Order = (Order) tokenService.retrieve(orderKey, Utility.UNEXPIREDCACHE);
         order.setPerson(person);
         order.setOrderDate(new Date());
         orderService.save(order);
         tokenService.clearObject(orderKey);
+        tokenService.clearObject(orderKey, Utility.UNEXPIREDCACHE);
         new Order();
         tokenService.saveObject(orderKey, new Order());
+        tokenService.saveObject(orderKey, new Order(), Utility.UNEXPIREDCACHE);
         redirAttr.addFlashAttribute("response","Checkout successful, order placed.");
         return "redirect:/welcome?X-Auth-Token=" + token;
     }

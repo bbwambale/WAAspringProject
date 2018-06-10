@@ -51,6 +51,7 @@ public class ProductController {
         orderline.setProduct(product);
         orderline.setQuantity(quantity);
         Order order = (Order) tokenService.retrieve(orderKey);
+        Order Order = (Order) tokenService.retrieve(orderKey, Utility.UNEXPIREDCACHE);
         order.setPerson(person);
         order.addOrderLine(orderline);
         orderline.setOrder(order);
@@ -92,6 +93,7 @@ public class ProductController {
             productTypeList.add(productType.name());
         }
         model.addAttribute("productTypeList", productTypeList);
+        model.addAttribute("productTypeSelected", product.getProductType().toString());
         model.addAttribute("token", token);
         return "productEditPage";
     }
