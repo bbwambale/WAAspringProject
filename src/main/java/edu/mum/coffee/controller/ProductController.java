@@ -3,6 +3,7 @@ package edu.mum.coffee.controller;
 import edu.mum.coffee.domain.*;
 import edu.mum.coffee.service.EhTokenService;
 import edu.mum.coffee.service.ProductService;
+import edu.mum.coffee.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContext;
@@ -50,8 +51,7 @@ public class ProductController {
         Orderline orderline = new Orderline();
         orderline.setProduct(product);
         orderline.setQuantity(quantity);
-        Order order = (Order) tokenService.retrieve(orderKey);
-        Order Order = (Order) tokenService.retrieve(orderKey, Utility.UNEXPIREDCACHE);
+        Order order = (Order) tokenService.retrieve(orderKey, Utility.UNEXPIREDCACHE);
         order.setPerson(person);
         order.addOrderLine(orderline);
         orderline.setOrder(order);

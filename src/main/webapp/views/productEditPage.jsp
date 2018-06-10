@@ -27,13 +27,21 @@
 </div>
 <div class="container">
     <div class="row align-items-center justify-content-center">
-        <form:form method="PUT" modelAttribute="product" action="/product" >
+        <form:form method="PUT" modelAttribute="product" action="/product">
             <input type="hidden" value="${product.id}" name="id"/>
             <div class="form-group">
                 <label>Product Type</label>
                 <form:select path = "productType" cssClass="form-control">
-                    <form:option value = "${product.productType}" label = "${product.productType}"   class="form-control"/>
-                    <form:options items = "${productTypeList}" />
+                    <c:forEach var="productTypeVal" items="${productTypeList}">
+                        <c:choose>
+                            <c:when test="${productTypeVal eq productTypeSelected}">
+                                <option value="${productTypeVal}" selected="true">${productTypeVal}</option>
+                            </c:when>
+                            <c:otherwise>
+                                <option value="${productTypeVal}">${productTypeVal}</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
                 </form:select>
             </div>
 
