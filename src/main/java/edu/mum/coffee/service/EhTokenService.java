@@ -1,6 +1,5 @@
 package edu.mum.coffee.service;
 
-
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
@@ -45,4 +44,5 @@ public class EhTokenService {
         Cache cache = cacheManager.getCache("tokenCache");
         cache.remove(key);
     }
+
 }

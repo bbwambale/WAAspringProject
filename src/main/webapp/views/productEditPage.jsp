@@ -9,8 +9,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <title>Coffee Shop Welcome Page</title>
+    <style>
+        span {
+            color: red; font-weight: bold;
+
+        }
+    </style>
+
 </head>
 <body>
 <div class="jumbotron">
@@ -20,7 +27,7 @@
 </div>
 <div class="container">
     <div class="row align-items-center justify-content-center">
-        <form:form method="PUT" modelAttribute="product" action="/product">
+        <form:form method="PUT" modelAttribute="product" action="/product" >
             <input type="hidden" value="${product.id}" name="id"/>
             <div class="form-group">
                 <label>Product Type</label>
@@ -32,17 +39,20 @@
 
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" value="${product.productName}" name="productName"  class="form-control"/>
+                <input type="text" value="${product.productName}" name="productName"  class="form-control" id="pname"  />
+                <span id="nameError"></span>
             </div>
 
             <div class="form-group">
                 <label>Price</label>
-                <input type="text" value="${product.price}" name="price"  class="form-control"/>
+                <input type="number" value="${product.price}" name="price"  class="form-control" id="pprice"/>
+                <span id="priceError"></span>
             </div>
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea name="description" class="form-control">${product.description}</textarea>
+                <textarea name="description" class="form-control" id="pdescrip">${product.description}</textarea>
+                <span id="descripError"></span>
             </div>
             <input type="hidden" value="${token}" name="X-Auth-Token"/>
 

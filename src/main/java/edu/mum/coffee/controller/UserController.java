@@ -42,6 +42,7 @@ public class UserController {
         return "home";
     }
 
+
     @GetMapping(path = "/user")
     public String getUser(Model model) {
         Person person = new Person();
